@@ -29,30 +29,31 @@ def init_file_path(directory):
     for file_name in os.listdir(directory):
         # Skip files that is not jpg
         file_path = '%s/%s' % (directory, file_name)
-        if imghdr.what(file_path) is not 'jpeg':
-            continue
-        if not debug:
-            # Delete all gray space images
-            is_gray_space = True
-            img = cv2.imread(file_path, cv2.IMREAD_UNCHANGED)
-            if len(img.shape) == 3 and img.shape[2] == 3:
-                for w in range(img.shape[0]):
-                    for h in range(img.shape[1]):
-                        r, g, b = img[w][h]
-                        if r != g != b:
-                            is_gray_space = False
-                        if not is_gray_space:
-                            break
-                    if not is_gray_space:
-                        break
-            if is_gray_space:
-                try:
-                    os.remove(file_path)
-                except OSError as e:
-                    print ("Error: %s - %s." % (e.filename, e.strerror))
-                continue
+        print(file_path)
+        # if imghdr.what(file_path) is not 'png' or 'jpeg':
+        #     continue
+        # if not debug:
+        #     # Delete all gray space images
+        #     is_gray_space = True
+        #     img = cv2.imread(file_path, cv2.IMREAD_UNCHANGED)
+        #     if len(img.shape) == 3 and img.shape[2] == 3:
+        #         for w in range(img.shape[0]):
+        #             for h in range(img.shape[1]):
+        #                 r, g, b = img[w][h]
+        #                 if r != g != b:
+        #                     is_gray_space = False
+        #                 if not is_gray_space:
+        #                     break
+        #             if not is_gray_space:
+        #                 break
+        #     if is_gray_space:
+        #         try:
+        #             os.remove(file_path)
+        #         except OSError as e:
+        #             print ("Error: %s - %s." % (e.filename, e.strerror))
+        #         continue
         paths.append(file_path)
-
+    print(paths)
     return paths
 
 

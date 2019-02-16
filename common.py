@@ -16,6 +16,7 @@ from config import batch_size, testing_dir, training_dir
 from image_helper import rgb_to_yuv, yuv_to_rgb
 from read_input import init_file_path, get_dataset_iterator
 from residual_encoder import ResidualEncoder
+import glob
 
 
 def create_folder(folder_path):
@@ -46,9 +47,12 @@ def init_model(train=True):
         print("⏳ Init input file path...")
         if train:
             file_paths = init_file_path(training_dir)
+            # file_paths = glob.glob(training_dir + "/*.png")
         else:
             file_paths = init_file_path(testing_dir)
+            # file_paths = glob.glob(testing_dir + "/*.png")
 
+        # print("file_paths:", file_paths)
         # Init training flag and global step
         print("⏳ Init placeholder and variables...")
         is_training = tf.placeholder(tf.bool, name="is_training")
