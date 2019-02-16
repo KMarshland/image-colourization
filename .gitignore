@@ -119,7 +119,7 @@ venv.bak/
 .idea/
 
 # project related
-vgg16.npy
+#vgg16.npy
 #summary/
 train2014/
 test2014/
