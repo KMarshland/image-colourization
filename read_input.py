@@ -65,16 +65,12 @@ def read_image(filename):
     :return: image with RGB color space
     """
     # Read image file
-    print(1, filename)
     content = tf.read_file(filename)
     # Decode the image with RGB color space
-    print(2)
     rgb_image = tf.image.decode_jpeg(content, channels=3, name="color_image_original")
     # Resize image to the right image_size
-    print(3)
     rgb_image = tf.image.resize_images(rgb_image, [image_size, image_size], method=image_resize_method)
     # Map all pixel element value into [0, 1]
-    print(4)
     return tf.clip_by_value(tf.div(tf.cast(rgb_image, tf.float32), 255), 0.0, 1.0, name="color_image_in_0_1")
 
 
@@ -87,7 +83,6 @@ def get_dataset_iterator(filenames, batch_size, num_epochs=None, shuffle=False):
     :param shuffle: if true, the strings are randomly shuffled within each epoch
     :return: the batch image data iterator
     """
-    print(filenames)
     dataset = tf.data.Dataset.from_tensor_slices(filenames)
     dataset = dataset.map(read_image)
     if shuffle:
