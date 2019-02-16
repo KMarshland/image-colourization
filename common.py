@@ -67,8 +67,11 @@ def init_model(train=True):
         residual_encoder = ResidualEncoder()
 
         # Get dataset iterator
+        print("🤖 Getting dataset iterator...")
+        print('File paths', file_paths)
         iterator = get_dataset_iterator(file_paths, batch_size, shuffle=True)
 
+        print("🤖 Getting images...")
         # Get color image
         color_image_rgb = iterator.get_next(name="color_image_rgb")
         color_image_yuv = rgb_to_yuv(color_image_rgb, "color_image_yuv")
@@ -79,6 +82,7 @@ def init_model(train=True):
         gray_image_yuv = rgb_to_yuv(gray_image_three_channels, "gray_image_yuv")
 
         # Build vgg model
+        print("🤖 Building vgg model...")
         with tf.name_scope("vgg16"):
             vgg.build(gray_image_three_channels)
 
