@@ -33,7 +33,7 @@ u_norm_para = 0.435912
 v_norm_para = 0.614777
 
 # Directory for training and testing dataset
-training_dir = "train2014"
+training_dir = "sample_test"
 testing_dir = "sample_test"
 
 # Model, result and generated images stored path
