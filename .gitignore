@@ -119,10 +119,12 @@ venv.bak/
 .idea/
 
 # project related
-#vgg16.npy
+vgg16.npy
 summary/train
 summary/test
 train-data
+dev-data
+test-data
 train2014/
 test2014/
 val2014/

@@ -37,7 +37,7 @@ def init_file_path(directory):
             # Delete all gray space images
             is_gray_space = True
             img = cv2.imread(file_path, cv2.IMREAD_UNCHANGED)
-            if len(img.shape) == 3 and img.shape[2] == 3:
+            if img is not None and img.shape is not None and len(img.shape) == 3 and img.shape[2] == 3:
                 for w in range(img.shape[0]):
                     for h in range(img.shape[1]):
                         r, g, b = img[w][h]
