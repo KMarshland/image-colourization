@@ -34,7 +34,7 @@ v_norm_para = 0.614777
 
 # Directory for training and testing dataset
 training_dir = "train-data"
-testing_dir = "sample_test"
+testing_dir = "dev-data"
 
 # Model, result and generated images stored path
 summary_path = "summary"
